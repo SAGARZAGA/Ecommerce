@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block metadescription %}
+        {{product.description|truncatewords:155 }}
+{% endblock %}
+
+
+{% block title %}
+
+    {% if product %}
+        {{ product.name}} - ZAG-EcomApp
+    {% endif %}
+
+{% endblock %}
+{% block content %}
+
+<div class="container">
+    <a href="{{product.category.get_url}}" class="text-success" style="text-decoration: None"><h3 class="my_prod_title">{{product.name}}</h3></a>
+
+<br>
+<div class="row" style="margin-bottom: 15px">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
+        <div style="min-width:18rem">
+            <img src="{{product.image.url}}" alt="{{product.name}}" style="width:350px; height: 400px; padding: 3px;" class="card">
+        </div>
+    </div>
+
+<div class="col-12 col-sm-12 col-md-4 col-md-12 col-lg-6">
+        <div>
+            <h1 class="my_prod_title">{{product.name}}</h1>
+            <h2><i>Price: $<b>{{product.price}}</b></i></h2>
+            <h4 class="my_prod_title"><b>DESCRIPTIONS:</b></h4>
+            <p class="text-justify my_prod_text">{{product.description}}</p>
+            {% if product.stock != 0 %}
+            <a href="{% url 'Cart:add_cart' product.id %}" class="btn btn-secondary">Add To Cart</a>
+              &nbsp;
+      &nbsp;
+            <a href="" class="btn btn-warning ">BUY</a>
+            {% else %}
+            <h3 class="text-justify my_prod_text text-danger"><b>OUT OF STOCK</b></h3>
+            {% endif %}
+         </div>
+    </div>
+</div>
+</div>
+{% endblock %}
