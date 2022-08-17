@@ -37,7 +37,7 @@
             <a href="{% url 'Cart:add_cart' product.id %}" class="btn btn-secondary">Add To Cart</a>
               &nbsp;
       &nbsp;
-            <a href="" class="btn btn-warning ">BUY</a>
+            <a href="{% url 'EcomApp:buy' %}" class="btn btn-warning ">BUY</a>
             {% else %}
             <h3 class="text-justify my_prod_text text-danger"><b>OUT OF STOCK</b></h3>
             {% endif %}
